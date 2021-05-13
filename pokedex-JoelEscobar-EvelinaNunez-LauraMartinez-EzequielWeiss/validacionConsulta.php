@@ -2,8 +2,11 @@
 //traemos la bd
 require_once("conexionALaBaseDeDatos.php");
 
+//si alguien quiere acceder a este lugar lo volvemos a la pagina anterior de nuevo
+// echo "<script>window.history.back();</script>";
 //transformamos la variable $conexion de la bd, en una super global con la variable super global $globals
 //pasandole por parametro la misma
+
 $GLOBALS['conexion'];
 
 class validarConsultas
@@ -154,5 +157,19 @@ class validarConsultas
         //ejecutamos
         $stmt->execute();
     }
-}
 
+    function seleccionarUnPokemon()
+    {
+        $numero = $_GET['numero'];
+        $solicitud = "SELECT * FROM pokemon where id=?";
+        $stmt = $GLOBALS['conexion']->prepare($solicitud);
+        //usamos el bind_param()
+        $stmt->bind_param("i", $numero);
+        //ejecutamos
+        $stmt->execute();
+        //guardamos el resultado
+        $result = $stmt->get_result();
+        // lo retornamos
+        return $result->fetch_assoc();
+    }
+}

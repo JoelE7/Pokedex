@@ -12,4 +12,3 @@ $conexion = new mysqli($nombreServidor, $username, $password, $database, $port);
 
 // la base de datos requiere su propia propiedad de codificación
 mysqli_set_charset($conexion, "utf8");
-
