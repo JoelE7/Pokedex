@@ -15,3 +15,11 @@ if(!isset($_SESSION['usuario']) && empty($buscar)){
 else if(isset($_SESSION['usuario']) && empty($buscar)){
       header('location:home.php?busquedaVacia');
 }
+
+if(!isset($_SESSION['usuario']) && !empty($buscar)){
+    header('location:index.php?filtro='.$buscar);
+}
+
+if(isset($_SESSION['usuario']) && !empty($buscar)){
+    header('location:home.php?filtro='.$buscar);
+}
