@@ -4,7 +4,7 @@
 //debe cambiar por una base como esta con su usuario y contraseña
 $nombreServidor = "localhost";
 $username = "root";
-$password = "sabrinakilian1";
+$password = "1234";
 $database = "pokedex";
 $port = "3306";
 
