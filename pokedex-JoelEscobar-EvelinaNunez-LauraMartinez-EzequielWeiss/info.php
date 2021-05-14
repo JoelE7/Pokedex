@@ -47,7 +47,7 @@ if($verdad==1){
             <!-- mostramos su informacion -->
                 <div class="bg-primary card-header mt-5">
                     <?php echo '<img src="recursos/IMG/' . $fila['imagen'] . '" class="float-left img-fluid"  style="width:25em; height:25em;"';?><br>   
-                    <?php echo '<img src="recursos/IMG/' . $fila['tipo'] . '" class="float-left img-fluid"  style="width:4.5em; height:4.5em;"';?><br>   
+                    <?php echo '<img src="recursos/IMG/' . $fila['tipo']  . ".png".  '" class="float-left img-fluid"  style="width:4.5em; height:4.5em;"';?><br>   
                     <h1 class="text-success display-4"><?php echo $fila['nombre'] ?></h1>
                     <p class="text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi provident incidunt, iure accusantium praesentium sed ipsa beatae nobis est corrupti natus modi nostrum corporis ea debitis assumenda in enim odio.
                     Ratione nobis quisquam veniam numquam dicta nesciunt qui necessitatibus est nostrum nulla cumque nisi ipsum rerum autem iusto placeat harum accusantium eaque quibusdam neque, dolorem dolores quidem. Libero, distinctio aspernatur!
