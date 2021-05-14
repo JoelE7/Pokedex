@@ -32,18 +32,18 @@ require_once("barraIndex.php");
                                 </tr>";
                 // vamos imprimiendo cada resultado, desarmando la variable $resultado donde la bd nos responderá de acuerdo a lo que le enviamos
 
-                while ($fila = mysqli_fetch_array($resultado)) {
+                while ($fila = $resultado-> fetch_assoc()) {
                     echo "<tr>";
                     // primero imprimimos la imagen correspondiente al pokemon
                     //Aclaración: en la bd, no están subidas las imagenes sino solo el nombre de ellas entonces
                     //cuando imprimimos el nombre en la etiqueta <img> es como si en el source estuvieramos poniendo el nombre de la imagen
                     //y solo se mostrará
-                    //ej: la primera iterración $fila['imagen'] = Bulbasaur.PNG
+                    //ej: la primera iteración $fila['imagen'] = Bulbasaur.PNG
                     //<img src="IMG/' . $fila['imagen']> = <img src="IMG/' . Bulbasaur.PNG>
                     //y así irá imprimiendo una por una
                     echo '<td><img src="recursos/IMG/' . $fila['imagen'] . '"style="width:10em; height:10em;"></td>';
                     // lo mismo que con las imagenes pasa con el tipo de pokemon, Tierra.PNG,agua.PNG,Fuego.PNG,Veneno.PNG
-                    echo '<td><img src="recursos/IMG/' . $fila['tipo'] . '"style="width:10em; height:10em;"</td>';
+                    echo '<td><img src="recursos/IMG/' . $fila['tipo'] . ".png". '"style="width:10em; height:10em;"></td>';
                     // Número de pokemon
                     echo "<td>" . $fila['numero'] . "</td>";
                     // El nombre del pokemon
