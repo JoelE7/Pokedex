@@ -22,7 +22,11 @@ if(isset($_GET['filtro'])){
                 // en este caso siempre mostramos los pokemones ordenados por su numero de pokemon
                 $solicitud ="";
                 if($filtro != ""){
-                    $solicitud = "SELECT * FROM pokemon WHERE nombre ='$filtro' order by numero";
+                    if(is_numeric($filtro)){
+                        $solicitud = "SELECT * FROM pokemon WHERE numero= $filtro order by numero";
+                    }else {
+                        $solicitud = "SELECT * FROM pokemon WHERE upper(nombre) =upper('$filtro') or tipo = upper('$filtro')  order by numero";
+                    }
                 }else{
                     $solicitud = "SELECT * FROM pokemon order by numero";
                 }
