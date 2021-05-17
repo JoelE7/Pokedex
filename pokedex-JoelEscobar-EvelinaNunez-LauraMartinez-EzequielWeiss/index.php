@@ -16,10 +16,8 @@ $filtro = $_GET['filtro'];
                     <input type="submit" name="enviar" class="btn btn-success d-inline d-block m-auto" value="¿Quien es ese pokemon?" style="margin-bottom: 5px;">
                 </form>
                 <?php
-                //traemos la conexion a la base de datos
                 require_once("conexionALaBaseDeDatos.php");
-                //armamos la solicitud a la bd
-                // en este caso siempre mostramos los pokemones ordenados por su numero de pokemon
+
                 $solicitud ="";
 
                 if($filtro != ""){

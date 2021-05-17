@@ -1,7 +1,5 @@
 <?php
 
-// usuario y contraseña, seguro lo sabrá, pero igual xd
-//debe cambiar por una base como esta con su usuario y contraseña
 $nombreServidor = "localhost";
 $username = "root";
 $password = "1234";
