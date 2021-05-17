@@ -63,9 +63,7 @@ class validarConsultas
                 || $tipo_imagen == "image/gif"
             ) {
                 //Ruta de la carpeta destino en servidor
-                //al corregir verifique que las rutas sean correctas, ya que están son de mi ordenador
-                $carpeta_destino = $_SERVER['DOCUMENT_ROOT'] . '/Web II/pokedex-JoelEscobar-EvelinaNunez-LauraMartinez-EzequielWeiss/IMG/';
-
+                $carpeta_destino ="recursos/IMG/";
                 //Movemos la imagen del directorio temporal al directorio escogido
                 move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_destino . $nombre_imagen);
                 //recibimos los datos del pokemon
@@ -112,9 +110,7 @@ class validarConsultas
                 || $tipo_imagen == "image/gif"
             ) {
                 //Ruta de la carpeta destino en servidor
-                //al corregir verifique que las rutas sean correctas, ya que están son de mi ordenador
-                $carpeta_destino = $_SERVER['DOCUMENT_ROOT'] . '/Web II/pokedex-JoelEscobar-EvelinaNunez-LauraMartinez-EzequielWeiss/IMG/';
-
+                $carpeta_destino ="recursos/IMG/";
                 //Movemos la imagen del directorio temporal al directorio escogido
                 move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_destino . $nombre_imagen);
                 //recibimos las variables del formulario

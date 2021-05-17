@@ -41,10 +41,10 @@ if (isset($_SESSION['usuario'])) {
                 echo "Número: <input = type= 'number'class='form-control' name = 'numero' value = '" . $fila['numero'] . "'  placeholder='Número de pokemon'><br> ";
                 echo "Nombre: <input = type= 'text'class='form-control' name = 'nombre' value = '" . $fila['nombre'] . "' placeholder='Nombre de pokemon'><br> ";
                 echo "Tipo : <select name='tipo' id='tipo' value = '" . $fila['tipo'] . "' class='form-control'>                     
-                                     <option value='Veneno.PNG'>Veneno</option>
-                                      <option value='Agua.PNG'>Agua</option>
-                                       <option value = 'Fuego.PNG'>Fuego</option>
-                                      <option value = 'Tierra.PNG'>Tierra</option>
+                                     <option value='Veneno'>Veneno</option>
+                                      <option value='Agua'>Agua</option>
+                                       <option value = 'Fuego'>Fuego</option>
+                                      <option value = 'Tierra'>Tierra</option>
                     </select>";
                 echo "Imagen: <input = type= 'file' name = 'imagen'class='form-control' id='imagen' value = '" . $fila['imagen'] . "'><br> ";
                 //el input hidden esta oculto, ya que no hay necesidad de modificarlo, el valor será el id, entonces se modificara dicho id 
@@ -61,10 +61,10 @@ if (isset($_SESSION['usuario'])) {
                 Número :<input type="number" name="numero" id="numero" class="form-control" placeholder="Número de pokemon">
                 Nombre : <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre de pokemon">
                 Tipo :<select name="tipo" id="tipo" class="form-control">
-                    <option value="Veneno.PNG">Veneno</option>
-                    <option value="Agua.PNG">Agua</option>
-                    <option value="Fuego.PNG">Fuego</option>
-                    <option value="Tierra.PNG">Tierra</option>
+                    <option value="Veneno">Veneno</option>
+                    <option value="Agua">Agua</option>
+                    <option value="Fuego">Fuego</option>
+                    <option value="Tierra">Tierra</option>
                 </select>
                 Imagen: <input type="file" name="imagen" id="imagen" class="form-control">
                 <!-- ocultamos un input de tipo hidden donde también le vamos a pasar un atributo acción con un dicho valor 
