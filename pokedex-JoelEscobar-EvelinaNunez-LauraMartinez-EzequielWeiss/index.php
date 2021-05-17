@@ -13,25 +13,36 @@ $filtro = $_GET['filtro'];
             <div class="col  mb-5">
                 <form action="busqueda.php" class="mt-3 mb-3" method="get">
                     <input type="text" name="buscar" class="d-block m-auto form-control w-75" placeholder="Ingrese el nombre,tipo o número de pokémon">
-                    <input type="submit" name="enviar" class="btn btn-success d-inline d-block m-auto" value="¿Quien es ese pokemon?" style="margin-bottom: 5px;">
+                    <input type="submit" name="enviar" class="btn btn-success d-inline d-block m-auto" value="¿Quién es ese pokemon?" style="margin-bottom: 5px;">
                 </form>
                 <?php
                 require_once("conexionALaBaseDeDatos.php");
 
-                $solicitud ="";
 
-                if($filtro != ""){
-                    if(is_numeric($filtro)){
+                if($filtro != ""){ //Si el filtro está lleno
+                    if(is_numeric($filtro)){// y si es un numérico
                         $solicitud = "SELECT * FROM pokemon WHERE numero= $filtro order by numero";
-                    }else {
+                    }
+                    else {
                         $solicitud = "SELECT * FROM pokemon WHERE upper(nombre) =upper('$filtro') or tipo = upper('$filtro')  order by numero";
                     }
+
                 }else{
                     $solicitud = "SELECT * FROM pokemon order by numero";
                 }
 
                 $resultado = mysqli_query($conexion, $solicitud);
+                $filasTotales=mysqli_num_rows($resultado);
+
+                if($filasTotales>0) {
                 imprimirResultados($resultado);
+                 }
+                else{
+                     echo "<h3>Pokemon no encontrado</h3>";
+                     $solicitud = "SELECT * FROM pokemon order by numero";
+                    $resultado = mysqli_query($conexion, $solicitud);
+                    imprimirResultados($resultado);
+            }
                 ?>
             </div>
         </div>
