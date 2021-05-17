@@ -18,8 +18,7 @@ if(isset($_GET['filtro'])){
                 <?php
                 //traemos la conexion a la base de datos
                 require_once("conexionALaBaseDeDatos.php");
-                //armamos la solicitud a la bd
-                // en este caso siempre mostramos los pokemones ordenados por su numero de pokemon
+
                 $solicitud ="";
                 if($filtro != ""){
                     if(is_numeric($filtro)){

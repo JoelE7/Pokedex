@@ -2,10 +2,10 @@
 
 
 session_start();
-//si el usuario no inicio sesión, lo manda al index.php
+//si el usuario no inició sesión, lo manda al index.php
 if (!isset($_SESSION['usuario'])) {
     header("Location:index.php");
-    //ahora si inicio sesión y el vivo se quiere ir a esta pagina sin haber pasado por el formulario 
+    //ahora si inicio sesión y el usuario se quiere ir a esta pagina sin haber pasado por el formulario
     //y las variables que debio haber pasado por ese form están vacias o no existen, lo manda al home.php
 } else if (!isset($_POST['accion'])) {
     header("Location:home.php");

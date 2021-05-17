@@ -6,7 +6,6 @@ require_once("validacionConsulta.php");
 
 $validador = new validarConsultas();
 
-
 $fila = $validador->quitarPokemon();
 
 header("Location:home.php");

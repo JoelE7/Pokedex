@@ -1,8 +1,6 @@
 <?php
 
-//traemos la bd
 require_once("conexionALaBaseDeDatos.php");
-//traemos la clase validacionConsulta
 require_once("validacionConsulta.php");
 
 session_start();
@@ -19,8 +17,8 @@ $validador = new validarConsultas();
 //recibimos un resultado del metodo validarUsuario();
 $fila = $validador->validarUsuario();
 
-//en caso de no recibir ningún resultado llegará un valor nulo
-//entonces aca con el isset si la variables tiene contenido, trajo al usuario correcto, por lo definido en el metodo
+//en caso de no recibir ningún resultado, llegará un valor nulo
+//entonces acá con el isset si la variables tiene contenido, trajo al usuario correcto, por lo definido en el metodo
 if(isset($fila)){
     //inicia sesión
     //guardamos en la variable $session el usuario
@@ -30,7 +28,7 @@ if(isset($fila)){
     exit();
 }else{
     //caso contrario le decimos un error de contraseña
-    echo "Error,usuario o contraseña no valido";
+    echo "Error,usuario o contraseña no válido";
 }
 
 

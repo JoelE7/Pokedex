@@ -4,8 +4,6 @@ create database if not exists pokedex;
 -- ponemos en uso a la base de datos
 use pokedex;
 
--- por si necestian borrar la bd, la sentencia de abajo
--- drop database pokedex;
 
 -- creamos la tabla
 create table pokemon(
@@ -50,7 +48,7 @@ create table usuario(
 );
 
 -- insertamos algunos usuarios a la tabla usuario
--- recuerden que solamente estos usuarios pueden acceder al home
+-- Solamente estos usuarios pueden acceder al home
 insert into usuario(nombre,pass)values('Joel','abcd4321');
 insert into usuario(nombre,pass)values('Laura','efgh5678');
 insert into usuario(nombre,pass)values('Evelina','ijkl91011');

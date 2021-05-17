@@ -28,7 +28,7 @@
                                 <?php
                                 // cuando dicho usuario ingrese a la platarorma se mostrará su nombre de usuario
                                 session_start();
-                                // si la variable está vacía entonces el usuario no podrá ingresar al home.php
+                                // si la variable está vacía, entonces el usuario no podrá ingresar al home.php
                                 //y lo enviará al index para que pueda iniciar sesión
                                 if (isset($_SESSION['usuario'])) {
                                     echo "<div class=''>

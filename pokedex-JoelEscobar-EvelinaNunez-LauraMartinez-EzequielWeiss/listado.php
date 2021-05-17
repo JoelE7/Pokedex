@@ -10,8 +10,7 @@ function imprimirResultados($resultado){
                                 <td>Nombre:</td>
                                 <td>Acciones</td>
                                 </tr>";
-    // todos los resultados los imprimimos en una tabla
-    //las etiquetas <tr> son filas y las <td> son columnas
+    // todos los resultados los imprimimos en una tablas. Las etiquetas <tr> son filas y las <td> son columnas
     // Como el usuario está logueado se les mostraran las acciones de modificaciones a realizar en la tabla
     // vamos imprimiendo cada resultado, desarmando la variable $resultado donde la bd nos responderá de acuerdo a lo que le enviamos
 

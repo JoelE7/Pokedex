@@ -2,9 +2,9 @@
 
 session_start();
 
-// validamos que el usuario este logueado, para cerrar sesión, caso contrario lo mandamos al index
+// validamos que el usuario esté logueado, para cerrar sesión, caso contrario lo mandamos al index
 if (isset($_SESSION['usuario'])) {
-    session_unset();
+    session_unset(); //liberamos todas las variables de sesión.
 
     session_destroy();
 
