@@ -46,7 +46,17 @@ if ($_POST['accion'] == 1) {
     // si era 2 o sea subir un pokemon subimos el pokemon con los datos que paso
 } else if ($_POST['accion'] == 2) {
     if (is_string($validador->subirPokemon())) {
-        echo $validador->subirPokemon();
+        $error =  $validador->subirPokemon();
+        if($error=="1"){
+            $id = $_POST['id'];
+            header("Location:acciones.php?accion=2&&error=1&&numero=" .$id."");
+            //  echo "Sólo se puede subir imagenes jpg/jpeg/png/gif";
+        }else if($error==2){
+            $id = $_POST['id'];
+            header("Location:acciones.php?accion=2&&error=2&&numero=" .$id."");
+        }else{
+            echo "Error, inesperado";
+        }
     } else {
         header("Location:home.php");
         exit();

@@ -49,8 +49,6 @@ if (isset($_SESSION['usuario'])) {
                         }else if($_GET['error']==2){
                             echo "<p class='text-danger'>El tamaño es demasiado grande</p>";
                         }
-                    }else{
-                       
                     }
                     //el input hidden está oculto, ya que no hay necesidad de modificarlo, el valor será el id, entonces se modificará dicho id
                     echo "<input type = 'hidden' name = 'id' value = '" . $fila['id'] . "'><br>";
@@ -75,6 +73,15 @@ if (isset($_SESSION['usuario'])) {
                     <option value="Tierra">Tierra</option>
                 </select>
                 Imagen: <input type="file" name="imagen" id="imagen" class="form-control">
+                <?php
+                    if(isset($_GET['error'])){
+                        if($_GET['error']==1){
+                            echo "<p class='text-danger'>Sólo se puede subir imagenes jpg/jpeg/png/gif</p>";
+                        }else if($_GET['error']==2){
+                            echo "<p class='text-danger'>El tamaño es demasiado grande</p>";
+                        }
+                    }
+                ?>
                 <!-- ocultamos un input de tipo hidden donde también le vamos a pasar un atributo acción con un dicho valor
         en la págína modificar.php se ve esto-->
                 <input type='hidden' name='accion' value="2"><br>

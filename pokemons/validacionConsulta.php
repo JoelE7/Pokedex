@@ -66,7 +66,7 @@ class validarConsultas
         $result = $stmt->get_result();
         // lo retornamos
         $fila = $result->fetch_assoc();
-        
+
         $nombre_imagen = $fila['imagen'];
 
         if (isset($_FILES['imagen']['name'])) {
@@ -117,44 +117,62 @@ class validarConsultas
     }
     function subirPokemon()
     {
-        //nombre de la imagen
-        $nombre_imagen = $_FILES['imagen']['name'];
-        //tipo de la imagen
-        $tipo_imagen = $_FILES['imagen']['type'];
-        //tamaño de la imagen
-        $tamaño = $_FILES['imagen']['size'];
+        //id recibido para modificar, lo metemos dentro de la super global $GLOBALS
 
-        if ($tamaño <= 3000000) {
-            // verifica que sea una imagen valida
-            if (
-                $tipo_imagen == "image/jpeg" || $tipo_imagen == "image/jpg" || $tipo_imagen == "image/png"
-                || $tipo_imagen == "image/gif"
-            ) {
-                //Ruta de la carpeta destino en servidor
-                $carpeta_destino = "recursos/IMG/";
-                //Movemos la imagen del directorio temporal al directorio escogido
-                move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_destino . $nombre_imagen);
-                //recibimos las variables del formulario
-                $numero = $_POST['numero'];
-                $nombre = $_POST['nombre'];
-                $tipo = $_POST['tipo'];
 
-                $solicitud2 = "INSERT INTO pokemon(numero,tipo,nombre,imagen) values(?,?,?,?)";
-                //preparamos la consulta
-                $stmt = $GLOBALS['conexion']->prepare($solicitud2);
-                $stmt->bind_param("isss", $numero, $tipo, $nombre, $nombre_imagen);
-                $stmt->execute();
+        if (isset($_FILES['imagen']['name'])) {
+            //nombre de la imagen
+            $nombre_imagen = $_FILES['imagen']['name'];
+            //tipo de la imagen
+            $tipo_imagen = $_FILES['imagen']['type'];
+            //tamaño de la imagen
+            $tamaño = $_FILES['imagen']['size'];
+
+            if ($tamaño <= 3000000) {
+                // verifica que sea una imagen valida
+                if (
+                    $tipo_imagen == "image/jpeg" || $tipo_imagen == "image/jpg" || $tipo_imagen == "image/png"
+                    || $tipo_imagen == "image/gif"
+                ) {
+                    //Ruta de la carpeta destino en servidor
+                    $carpeta_destino = "recursos/IMG/";
+                    //Movemos la imagen del directorio temporal al directorio escogido
+                    move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_destino . $nombre_imagen);
+                    //recibimos las variables del formulario
+                    $numero = $_POST['numero'];
+                    $nombre = $_POST['nombre'];
+                    $tipo = $_POST['tipo'];
+
+                    $solicitud2 = "INSERT INTO pokemon(numero,tipo,nombre,imagen) values(?,?,?,?)";
+                    //preparamos la consulta
+                    $stmt = $GLOBALS['conexion']->prepare($solicitud2);
+                    $stmt->bind_param("isss", $numero, $tipo, $nombre, $nombre_imagen);
+                    $stmt->execute();
+                } else {
+                    //En caso de que intente subir imagenes distintas o archivos no válidos,
+                    //lanzar un mensaje de error, diciendo los tipos que admite
+                    // $error = "Sólo se puede subir imagenes jpg/jpeg/png/gif";
+                    $error = "1";
+                    return $error;
+                }
             } else {
-                //En caso de que intente subir imagenes distintas o archivos no válidos,
-                //lanzar un mensaje de error, diciendo los tipos que admite
-                $error = "Sólo se puede subir imágenes jpg/jpeg/png/gif";
+                //si la imagen supera el tamaño de 3mb, lanzará el mensaje
+                // $error = "El tamaño es demasiado grande";
+                $error = "2";
                 return $error;
             }
-        } else {
-            //si la imagen supera el tamaño de 3mb, lanzará el mensaje
-            $error = "El tamaño es demasiado grande";
-            return $error;
         }
+        $numero = $_POST['numero'];
+        $nombre = $_POST['nombre'];
+        $tipo = $_POST['tipo'];
+
+        $solicitud2 = "UPDATE pokemon SET numero = ?, nombre = ?, tipo = ?, imagen = ? WHERE id =?";
+        //preparamos la consulta
+        $stmt = $GLOBALS['conexion']->prepare($solicitud2);
+
+        $stmt->bind_param("isssi", $numero, $nombre, $tipo, $nombre_imagen, $GLOBALS['id'],);
+
+        $stmt->execute();
     }
 
     function quitarPokemon()
