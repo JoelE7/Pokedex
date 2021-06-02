@@ -7,8 +7,10 @@ session_start();
 
 if(isset($_SESSION['usuario'])){
     header("Location:home.php");
+    exit();
 }else if(!isset($_POST['user'],$_POST['pass'])){
     header("Location:index.php");
+    exit();
 }else
 
 //la instanciamos
@@ -27,8 +29,9 @@ if(isset($fila)){
     header("Location: home.php");
     exit();
 }else{
-    //caso contrario le decimos un error de contraseña
-    echo "Error,usuario o contraseña no válido";
+    //caso contrario le decimos un error de contraseña enviando devuelta al index
+    header("Location:index.php?sesion=false");
+    exit();
 }
 
 

@@ -31,6 +31,11 @@
                                         <input type="password" name="pass" placeholder="password" class="ml-3 form-control">
                                         <input class="ml-3 btn btn-success" type="submit" value="Ingresar"></input>
                                     </div>
+                                    <?php
+                                        if (isset($_GET['sesion'])) {
+                                            echo "<br><br>" ."<p class='text-primary ml-3'>Error,usuario o contraseña no válido</p>";
+                                        }
+                                        ?>
                                 </form>
 
                             </ul>

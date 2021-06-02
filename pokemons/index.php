@@ -24,7 +24,7 @@ $filtro = $_GET['filtro'];
                         $solicitud = "SELECT * FROM pokemon WHERE numero= $filtro order by numero";
                     }
                     else {
-                        $solicitud = "SELECT * FROM pokemon WHERE upper(nombre) =upper('$filtro') or tipo = upper('$filtro')  order by numero";
+                        $solicitud = "SELECT * FROM pokemon WHERE nombre like '%$filtro%' or tipo like '%$filtro%'  order by numero";
                     }
 
                 }else{

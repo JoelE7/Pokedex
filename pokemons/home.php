@@ -26,7 +26,7 @@ if(isset($_GET['filtro'])){
                             if(is_numeric($filtro)){ //y si es númericp
                             $solicitud = "SELECT * FROM pokemon WHERE numero= $filtro order by numero";
                             }else {
-                            $solicitud = "SELECT * FROM pokemon WHERE upper(nombre) =upper('$filtro') or tipo = upper('$filtro')  order by numero";
+                                $solicitud = "SELECT * FROM pokemon WHERE nombre like '%$filtro%' or tipo like '%$filtro%'  order by numero";
                             }
                 }else{
                     $solicitud = "SELECT * FROM pokemon order by numero";

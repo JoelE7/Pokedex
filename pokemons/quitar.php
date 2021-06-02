@@ -9,4 +9,5 @@ $validador = new validarConsultas();
 $fila = $validador->quitarPokemon();
 
 header("Location:home.php");
+exit();
 ?>

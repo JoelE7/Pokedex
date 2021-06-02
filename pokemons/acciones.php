@@ -39,7 +39,19 @@ if (isset($_SESSION['usuario'])) {
                                        <option value = 'Fuego'>Fuego</option>
                                       <option value = 'Tierra'>Tierra</option>
                     </select>";
-                    echo "Imagen: <input = type= 'file' name = 'imagen'class='form-control' id='imagen' value = '" . $fila['imagen'] . "'><br> ";
+                    echo "<p class='text-danger'>¿Desea editar la imagen?</p>";
+                    echo "<input type='radio' name='editarImagen' id='editarImagen' class='ml-5' onclick='activar()'>Si";
+                    echo "<input type='radio' name='editarImagen' id='editarImagen' class='ml-5' onclick='desactivar()'>No <br>";
+                    echo "Imagen: <input = type= 'file' disabled name = 'imagen' class='form-control' id='imagen' value = '" . $fila['imagen'] . "'><br> ";
+                    if(isset($_GET['error'])){
+                        if($_GET['error']==1){
+                            echo "<p class='text-danger'>Sólo se puede subir imagenes jpg/jpeg/png/gif</p>";
+                        }else if($_GET['error']==2){
+                            echo "<p class='text-danger'>El tamaño es demasiado grande</p>";
+                        }
+                    }else{
+                       
+                    }
                     //el input hidden está oculto, ya que no hay necesidad de modificarlo, el valor será el id, entonces se modificará dicho id
                     echo "<input type = 'hidden' name = 'id' value = '" . $fila['id'] . "'><br>";
                     //ocultamos un input de tipo hidden donde también le vamos a pasar un atributo acción con un dicho valor, en la pagína modificar.php se ve esto
@@ -48,8 +60,8 @@ if (isset($_SESSION['usuario'])) {
                     echo "</form>";
                 }
             } else {
-                echo "entro aca 0";
-                // header("Location:home.php");
+                 header("Location:home.php");
+                 exit();
             }
         } else if ($accion == 2) {
 ?>
@@ -67,15 +79,21 @@ if (isset($_SESSION['usuario'])) {
         en la págína modificar.php se ve esto-->
                 <input type='hidden' name='accion' value="2"><br>
                 <input type="submit" value="Subir Pokemon" class="btn btn-success form-control">
+                <input type="radio" name="" id="">
             </form>
 <?php
         } else {
             header("Location:home.php");
+            exit();
         }
     } else {
         header("Location:home.php");
+        exit();
     }
 } else {
     header("Location:index.php");
+    exit();
+
 }
 ?>
+<script src="recursos/JS/script.js"></script>
