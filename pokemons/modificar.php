@@ -11,7 +11,7 @@ if (!isset($_SESSION['usuario'])) {
 } else if (!isset($_POST['accion'])) {
     header("Location:home.php");
     exit();
-} else
+}
 
     // traemos la bd
     require_once("conexionALaBaseDeDatos.php");
