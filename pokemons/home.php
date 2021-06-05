@@ -13,12 +13,15 @@ if(isset($_GET['filtro'])){
             <div class="col  mb-5 bg-danger">
                 <form action="busqueda.php" class="mt-3 mb-3" method="get">
                     <input type="text" name="buscar" class="d-block m-auto form-control w-75" placeholder="Ingrese el nombre,tipo o número de pokémon">
-                    <input type="submit" name="enviar" class="btn btn-success d-inline d-block m-auto" value="¿Quién es ese pokemon?" style="margin-bottom: 5px;">
+                    <input type="submit" name="enviar" class="btn btn-success d-inline d-block m-auto" value="¿Quién es ese pokemon?" style="margin-bottom: 5px; margin-top:5px">
                 </form>
                 <?php
                 //traemos la conexion a la base de datos
                 require_once("conexionALaBaseDeDatos.php");
 
+                echo "<div class='dropdown-divider'></div>";
+                echo "<a href='acciones.php?accion=2'><button class='btn btn-success btn-block'>Nuevo Pokemon</button></a>";
+                echo "<div class='dropdown-divider'></div>";
                 $solicitud ="";
 
                 if($filtro != ""){ //Si alguien llenó algo en el campo de búsqueda
@@ -45,9 +48,7 @@ if(isset($_GET['filtro'])){
                     $resultado = mysqli_query($conexion, $solicitud);
                     imprimirResultados($resultado);
                 }
-                echo "<div class='dropdown-divider'></div>";
-                echo "<a href='acciones.php?accion=2'><button class='btn btn-success btn-block'>Nuevo Pokemon</button></a>";
-                echo "<div class='dropdown-divider'></div>";
+
                 ?>
             </div>
         </div>

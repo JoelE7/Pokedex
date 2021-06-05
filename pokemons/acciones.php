@@ -5,6 +5,7 @@
 require_once("conexionALaBaseDeDatos.php");
 require_once("validacionConsulta.php");
 
+
 $validador = new validarConsultas();
 
 // recibimos el número del pokemon
@@ -20,8 +21,9 @@ $accion = $_GET['accion'];
 ?>
 
 <?php
-session_start();
+
 // validamos que haya iniciado sesión, sino lo mandamos al index.php
+include_once ("barraHome.php");
 if (isset($_SESSION['usuario'])) {
     //ahora si inició sesión y el usuario se quiere ir a esta pagina sin haber pasado por el formulario
     //y las variables que debió haber pasado por ese form están vacias o no existen, lo manda al home.php
@@ -29,7 +31,7 @@ if (isset($_SESSION['usuario'])) {
         //si la acción llegara a ser 1, o sea que quiere actualizar un pokemon, lo enviamos a un formulario con los datos cargados del pokemon que eligíó actualizar
         if ($accion == 1) {
             if (isset($_GET['numero'])) {
-                echo "<form action='modificar.php' method='POST' enctype='multipart/form-data'>";
+                echo "<form action='modificar.php' method='POST' enctype='multipart/form-data' style='background-color: #7a2518; color: whitesmoke; padding: 15px; width:400px; height:400px'>";
                 while ($fila  = $resultado->fetch_assoc()) {
                     echo "Número: <input = type= 'number'class='form-control' name = 'numero' value = '" . $fila['numero'] . "'  placeholder='Número de pokemon'><br> ";
                     echo "Nombre: <input = type= 'text'class='form-control' name = 'nombre' value = '" . $fila['nombre'] . "' placeholder='Nombre de pokemon'><br> ";
@@ -54,7 +56,7 @@ if (isset($_SESSION['usuario'])) {
                     echo "<input type = 'hidden' name = 'id' value = '" . $fila['id'] . "'><br>";
                     //ocultamos un input de tipo hidden donde también le vamos a pasar un atributo acción con un dicho valor, en la pagína modificar.php se ve esto
                     echo "<input type = 'hidden' name = 'accion' value = '1'><br>";
-                    echo  "<input type='submit' name='enviar'class='btn btn-success form-control' value='Subir'>";
+                    echo  "<input type='submit' name='enviar'class='btn btn-success form-control' value='MODIFICAR POKEMON' style='font-weight: bold'>";
                     echo "</form>";
                 }
             } else {
@@ -63,7 +65,7 @@ if (isset($_SESSION['usuario'])) {
             }
         } else if ($accion == 2) {
 ?>
-            <form action="modificar.php" method='POST' enctype='multipart/form-data'>
+            <form action="modificar.php" method='POST' enctype='multipart/form-data' style='background-color: #7a2518; color: whitesmoke; padding: 15px; width:400px; height:400px'>
                 Número :<input type="number" name="numero" id="numero" class="form-control" placeholder="Número de pokemon">
                 Nombre : <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre de pokemon">
                 Tipo :<select name="tipo" id="tipo" class="form-control">
@@ -85,8 +87,8 @@ if (isset($_SESSION['usuario'])) {
                 <!-- ocultamos un input de tipo hidden donde también le vamos a pasar un atributo acción con un dicho valor
         en la págína modificar.php se ve esto-->
                 <input type='hidden' name='accion' value="2"><br>
-                <input type="submit" value="Subir Pokemon" class="btn btn-success form-control">
-                <input type="radio" name="" id="">
+                <input type="submit" value="SUBIR POKEMON" class="btn btn-success form-control" style="font-weight: bold">
+
             </form>
 <?php
         } else {
